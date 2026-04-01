@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Времена английского | English Learning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-tenses">
+    <div class="container">
+        <a href="index.html" class="back-link">← На главную</a>
+        <h1>⏳ Времена английского глагола</h1>
+        
+        <div class="tenses-table">
+            <h2>📖 Таблица времён</h2>
+             <table>
+                <thead>
+                    <tr><th>Время</th><th>Формула</th><th>Пример</th><th>Ключевые слова</th><th>Выучено</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Present Simple</strong></td><td>V / V-s</td><td>I play tennis every day.</td><td>usually, always, every day</td><td><button class="mark-btn" data-topic="tense_present_simple">✔️</button></td></tr>
+                    <tr><td><strong>Present Continuous</strong></td><td>am/is/are + V-ing</td><td>She is playing now.</td><td>now, at the moment, Look!</td><td><button class="mark-btn" data-topic="tense_present_continuous">✔️</button></td></tr>
+                    <tr><td><strong>Past Simple</strong></td><td>V-ed / V₂</td><td>I played yesterday.</td><td>yesterday, last week, ago</td><td><button class="mark-btn" data-topic="tense_past_simple">✔️</button></td></tr>
+                    <tr><td><strong>Past Continuous</strong></td><td>was/were + V-ing</td><td>I was playing at 5 pm.</td><td>at 5 o'clock yesterday</td><td><button class="mark-btn" data-topic="tense_past_continuous">✔️</button></td></tr>
+                    <tr><td><strong>Future Simple</strong></td><td>will + V</td><td>I will play tomorrow.</td><td>tomorrow, next week</td><td><button class="mark-btn" data-topic="tense_future_simple">✔️</button></td></tr>
+                    <tr><td><strong>Present Perfect</strong></td><td>have/has + V₃</td><td>I have played already.</td><td>already, just, ever, never</td><td><button class="mark-btn" data-topic="tense_present_perfect">✔️</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="training-block">
+            <h2>🧠 Тренировка: выбери правильное время</h2>
+            <div id="training-question">
+                <p id="sentence-display" class="sentence"></p>
+                <select id="tense-select">
+                    <option value="">-- Выберите время --</option>
+                    <option value="present_simple">Present Simple</option>
+                    <option value="present_continuous">Present Continuous</option>
+                    <option value="past_simple">Past Simple</option>
+                    <option value="past_continuous">Past Continuous</option>
+                    <option value="future_simple">Future Simple</option>
+                    <option value="present_perfect">Present Perfect</option>
+                </select>
+                <button id="check-answer" class="btn">Проверить</button>
+            </div>
+            <div id="feedback" class="feedback"></div>
+            <div id="training-stats" class="stats">
+                <span>Правильно: <span id="correct-count">0</span></span> |
+                <span>Всего: <span id="total-count">0</span></span>
+                <button id="next-question" class="btn small" style="margin-left: 15px;">Следующий вопрос →</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

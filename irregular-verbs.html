@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неправильные глаголы | English Learning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-verbs">
+    <div class="container">
+        <a href="index.html" class="back-link">← На главную</a>
+        <h1>📜 Неправильные глаголы (45 основных)</h1>
+        
+        <div class="verbs-table">
+            <h2>Таблица неправильных глаголов</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th><th>Перевод</th><th>Выучено</th> </>
+                    </thead>
+                    <tbody id="verbs-table-body">
+                        <!-- Таблица будет заполнена динамически через JavaScript, чтобы не дублировать данные -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="verb-training" class="verb-training">
+            <h2>✏️ Тренировка: напишите вторую форму (Past Simple)</h2>
+            <div class="verb-question">
+                <p>Глагол: <strong id="verb-infinitive"></strong></p>
+                <input type="text" id="verb-input" class="verb-input" placeholder="Введите Past Simple">
+                <button id="check-verb" class="btn">Проверить</button>
+                <button id="next-verb" class="btn small">Следующий →</button>
+            </div>
+            <div id="verb-feedback" class="verb-feedback"></div>
+            <div class="verb-stats">
+                <span>✅ Правильно: <span id="verb-correct-count">0</span></span> |
+                <span>📊 Всего: <span id="verb-total-count">0</span></span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

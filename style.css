@@ -1,0 +1,688 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+    color: #2c3e2f;
+    min-height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ЯРКИЕ ФОНЫ ДЛЯ КАЖДОЙ СТРАНИЦЫ */
+.page-index {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    position: relative;
+}
+.page-index::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, rgba(255,255,200,0.2) 0px, rgba(255,255,200,0.2) 40px, rgba(255,220,150,0.2) 40px, rgba(255,220,150,0.2) 80px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.page-preschool {
+    background: linear-gradient(120deg, #f6d5f7, #fbe9d2);
+    position: relative;
+}
+.page-preschool::before {
+    content: "☁️☁️☁️";
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 80px;
+    opacity: 0.2;
+    pointer-events: none;
+    white-space: pre;
+}
+
+.page-grades {
+    background: linear-gradient(120deg, #c8e6c9, #a5d6a7);
+    position: relative;
+}
+.page-grades::before {
+    content: "🍃🌿🍃";
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 60px;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.page-tenses {
+    background: linear-gradient(120deg, #b3e5fc, #81d4fa);
+    position: relative;
+}
+.page-tenses::before {
+    content: "⏰⌛🕰️";
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 70px;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.page-verbs {
+    background: linear-gradient(120deg, #e1bee7, #ce93d8);
+    position: relative;
+}
+.page-verbs::before {
+    content: "✒️📜🖋️";
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 70px;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.page-progress {
+    background: linear-gradient(120deg, #ffe0b2, #ffb74d);
+    position: relative;
+}
+.page-progress::before {
+    content: "✔️✔️✔️";
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 70px;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgba(255, 248, 235, 0.92);
+    border-radius: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    backdrop-filter: blur(3px);
+    position: relative;
+    z-index: 2;
+}
+
+/* ИНТЕРАКТИВНЫЕ ИГРУШКИ НА ГЛАВНОЙ */
+.floating-toys {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.toy {
+    position: absolute;
+    font-size: 3rem;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.3s ease, filter 0.2s;
+    user-select: none;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.toy:hover {
+    transform: scale(1.2) rotate(10deg);
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
+    transition: transform 0.2s;
+}
+
+.toy:active {
+    animation: bounce 0.3s ease;
+}
+
+@keyframes bounce {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.3) rotate(20deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ОБЩИЕ ЭЛЕМЕНТЫ */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #2c5e2a;
+}
+
+h2 {
+    color: #3d6b3a;
+    margin: 20px 0 15px 0;
+}
+
+h3 {
+    color: #4a7a46;
+    margin: 15px 0 10px 0;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #4a5a3e;
+}
+
+.buttons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    background: #e8dccc;
+    padding: 16px 28px;
+    border-radius: 60px;
+    text-decoration: none;
+    color: #2c5e2a;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    background: #d4c4ae;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.btn.small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.card {
+    background: #fffaf2;
+    border-radius: 28px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #e2d8ca;
+}
+
+/* Таблицы – горизонтальная прокрутка на мобильных */
+.tenses-table, .verbs-table {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 250, 240, 0.9);
+    border-radius: 20px;
+    overflow: hidden;
+    min-width: 600px; /* чтобы на мобильных была прокрутка, а не сжатие */
+}
+th, td {
+    border: 1px solid #d9cdbc;
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #e8ddcf;
+    color: #2c5e2a;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #5d7a4a;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.mode-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.mode-btn {
+    background: #e8dccc;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #2c5e2a;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+}
+
+.mode-btn.active {
+    background: #cbbd9e;
+    color: #1e3a1c;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.active-mode {
+    background: #cbbd9e !important;
+    color: #1e3a1c !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.content-area {
+    min-height: 450px;
+    margin-top: 20px;
+}
+
+.feedback {
+    margin: 20px 0;
+    padding: 15px 20px;
+    border-radius: 20px;
+    background: #f9efdf;
+    border-left: 5px solid #b6a68b;
+}
+
+.feedback.correct {
+    background: #d9efd9;
+    border-left-color: #4caf50;
+}
+
+.feedback.wrong {
+    background: #ffe0e0;
+    border-left-color: #f44336;
+}
+
+.stats {
+    margin-top: 15px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Дошкольники: алфавит */
+.alphabet-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.letter-card {
+    background: #fffef7;
+    border-radius: 20px;
+    width: 110px;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+    border: 1px solid #e2d4c4;
+}
+
+.letter-card:hover {
+    transform: translateY(-5px);
+}
+
+.letter {
+    font-size: 3.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.letter-card .word {
+    font-size: 1rem;
+    margin: 8px 0;
+    font-weight: bold;
+    color: #3d6b3a;
+}
+
+.speak-btn {
+    background: #f0e5d8;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 12px;
+    margin-top: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: inherit;
+}
+
+.mark-btn {
+    background: #d9e0c5;
+    border: none;
+    border-radius: 20px;
+    padding: 4px 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-family: inherit;
+}
+
+/* Игра "Найди пару" – квадратная сетка */
+.matching-game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.matching-card {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #f5ede2;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+    border: 3px solid #e2d4c4;
+    padding: 10px;
+    position: relative;
+}
+
+.matching-item {
+    background: #fffef7;
+    border-radius: 24px;
+    padding: 20px;
+    width: 180px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 3px solid transparent;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.matching-item.selected {
+    border-color: #7c9c68;
+    background: #faf3e8;
+    transform: scale(1.02);
+}
+
+.matching-item .matching-emoji {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.matching-word {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2c5e2a;
+    min-height: 50px;
+}
+
+.result-message {
+    margin-top: 25px;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 30px;
+    background: #f0e5d8;
+}
+
+/* 1-4 классы */
+.grade-game {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.words-column, .pictures-column {
+    flex: 1;
+    min-width: 280px;
+    background: rgba(255, 252, 245, 0.85);
+    border-radius: 28px;
+    padding: 20px;
+}
+
+.grade-words-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.grade-word-card {
+    background: #fffaf2;
+    padding: 12px 20px;
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid #e2d4c4;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.grade-word-card.selected {
+    background: #d4e2ca;
+    border-color: #7c9c68;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.word-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.speak-word-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.grade-pictures-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.grade-picture-card {
+    background: #fffaf2;
+    padding: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid #e2d4c4;
+    width: 110px;
+    text-align: center;
+}
+
+.grade-picture-card:hover {
+    transform: scale(1.05);
+    background: #fcf3e8;
+}
+
+.grade-picture-card .picture-emoji {
+    font-size: 3rem;
+    display: block;
+}
+
+.grade-picture-card .picture-label {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #6b5a48;
+}
+
+.topic-complete-btn {
+    text-align: center;
+    margin: 30px 0 15px;
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ И ТЕЛЕФОНОВ */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    .letter-card {
+        width: 100px;
+        padding: 12px 8px;
+    }
+    .letter {
+        font-size: 2.5rem;
+    }
+    .matching-game {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    .study-cards {
+        gap: 15px;
+    }
+    .study-card {
+        width: 160px;
+    }
+}
+
+@media (max-width: 600px) {
+    .buttons-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn {
+        text-align: center;
+    }
+    .mode-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .mode-btn {
+        text-align: center;
+    }
+    .alphabet-grid {
+        gap: 10px;
+    }
+    .letter-card {
+        width: 80px;
+        padding: 10px 5px;
+    }
+    .letter {
+        font-size: 2rem;
+    }
+    .letter-card .word {
+        font-size: 0.8rem;
+    }
+    .matching-game {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .study-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    .study-card {
+        width: 140px;
+        padding: 12px;
+    }
+    .grade-game {
+        flex-direction: column;
+    }
+    .words-column, .pictures-column {
+        min-width: auto;
+    }
+    .grade-word-card {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+    .grade-picture-card {
+        width: 90px;
+        padding: 10px;
+    }
+    .grade-picture-card .picture-emoji {
+        font-size: 2.5rem;
+    }
+    .result-message {
+        font-size: 1rem;
+    }
+    .tenses-table table, .verbs-table table {
+        min-width: 500px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .letter-card {
+        width: 70px;
+    }
+    .letter {
+        font-size: 1.8rem;
+    }
+    .study-card {
+        width: 130px;
+    }
+    .study-card div:first-child {
+        font-size: 2.5rem;
+    }
+    .study-card div:nth-child(2) {
+        font-size: 1.2rem;
+    }
+    .grade-picture-card {
+        width: 80px;
+    }
+    .grade-picture-card .picture-emoji {
+        font-size: 2rem;
+    }
+    .btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
